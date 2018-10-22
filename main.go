@@ -342,6 +342,7 @@ func main() {
 			fmt.Println("  https://www.youtube.com/watch?v=pJFM321_lAs")
 			fmt.Println("  https://blog.fogcreek.com/increase-defect-detection-with-our-code-review-checklist-example/")
 			fmt.Println("  https://github.com/rjz/code-review-checklist")
+			fmt.Println("  https://medium.com/unpacking-trunk-club/designing-awesome-code-reviews-5a0d9cd867e3")
 			break
 		case "version":
 			fmt.Println(version)
