@@ -249,10 +249,11 @@ func usage() {
 	fmt.Println("  problems            problem solving helper")
 	fmt.Println("  audits              audit guideline")
 	fmt.Println("  maintainability     knowledge about maintability")
+	fmt.Println("  checklist           a handy codereview checklist")
 	fmt.Println("  tools               the toolkit manager")
 	fmt.Println("  credits             print credits")
 	fmt.Println("")
-	fmt.Println("Copyright (c) 2016, Paul Vollmer. All rights reserved")
+	fmt.Println("Copyright (c) 2016-2018, Paul Vollmer. All rights reserved")
 	fmt.Println("check the credits for a list of all sources used for this tool.")
 	fmt.Println("")
 }
@@ -408,7 +409,7 @@ func docs() {
 
 func (c *CodeReview) PrintVocabulars() {
 	fmt.Println("V O C A B U L A R")
-	fmt.Println("-----------------")
+	fmt.Println("-----------------\n")
 	for _, v := range c.Vocabulars {
 		v.Print()
 	}
@@ -417,7 +418,7 @@ func (c *CodeReview) PrintVocabulars() {
 
 func (c *CodeReview) PrintMethods() {
 	fmt.Println("M E T H O D S")
-	fmt.Println("-------------")
+	fmt.Println("-------------\n")
 	for _, v := range c.Methods {
 		v.Print()
 	}
@@ -426,7 +427,7 @@ func (c *CodeReview) PrintMethods() {
 
 func (c *CodeReview) PrintProblems() {
 	fmt.Println("P R O B L E M S")
-	fmt.Println("---------------")
+	fmt.Println("---------------\n")
 	for _, v := range c.Problems {
 		v.Print()
 	}
@@ -435,7 +436,7 @@ func (c *CodeReview) PrintProblems() {
 
 func (c *CodeReview) PrintAudits() {
 	fmt.Println("A U D I T S")
-	fmt.Println("-----------")
+	fmt.Println("-----------\n")
 	for _, v := range c.Audits {
 		v.Print()
 	}
@@ -444,7 +445,7 @@ func (c *CodeReview) PrintAudits() {
 
 func (c *CodeReview) PrintMaintainability() {
 	fmt.Println("M A I N T A I N A B I L I T Y")
-	fmt.Println("-----------------------------")
+	fmt.Println("-----------------------------\n")
 	for _, v := range c.Maintainability {
 		v.Print()
 		// fmt.Printf("%s (%s)\n", strings.ToUpper(v.Name), v.Description)
@@ -457,7 +458,7 @@ func (c *CodeReview) PrintMaintainability() {
 
 func (c *CodeReview) PrintTools() {
 	fmt.Println("T O O L S")
-	fmt.Println("---------")
+	fmt.Println("---------\n")
 	for _, v := range c.Tools {
 		// fmt.Println(v.Name)
 		// fmt.Println("  - " + v.Description)
@@ -468,15 +469,15 @@ func (c *CodeReview) PrintTools() {
 
 func (c *CodeReview) PrintChecklist() {
 	fmt.Println("C H E C K L I S T")
-	fmt.Println("-----------------")
+	fmt.Println("-----------------\n")
 	fmt.Println("  guide for clean, merge-ready pull requests...")
 	fmt.Println("")
 	for _, v := range c.Checklist {
 		v.Print()
 		for _, i := range v.Items {
-			fmt.Println("  - " + i)
+			fmt.Println("  - [ ] " + i)
 		}
 		fmt.Println("")
 	}
-	fmt.Println("")
+	fmt.Println("source: https://github.com/rjz/code-review-checklist\n")
 }
