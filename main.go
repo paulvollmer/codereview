@@ -160,7 +160,7 @@ var (
 						"the following parameters can be measured and used to detect hacky code:",
 						"- Maintain",
 						"- Difficulty",
-						"- Lines of code",
+						"- Lines of code                https://github.com/bytbox/sloc",
 						"- Estimated numbers of bugs",
 					},
 				},
@@ -289,6 +289,7 @@ func usage() {
 	fmt.Println("  checklist           a handy codereview checklist")
 	fmt.Println("  feedback            how to give feedback")
 	fmt.Println("  tools               the toolkit manager")
+	fmt.Println("  links               a list of useful links")
 	fmt.Println("  credits             print credits")
 	fmt.Println("")
 	fmt.Println("Copyright (c) 2016-2018, Paul Vollmer. All rights reserved")
@@ -335,6 +336,9 @@ func main() {
 			break
 		case "tools":
 			codereview.PrintTools()
+			break
+		case "links":
+			codereview.PrintLinks()
 			break
 		case "credits":
 			fmt.Println("codereview is build by knowledge of the following sources:")
@@ -446,6 +450,8 @@ func docs() {
 	codereview.PrintMaintainability()
 	codereview.PrintTools()
 	codereview.PrintChecklist()
+	codereview.PrintFeedback()
+	codereview.PrintLinks()
 	fmt.Println("")
 	fmt.Println("|||")
 	fmt.Println("VVV")
@@ -532,7 +538,7 @@ func (c *CodeReview) PrintChecklist() {
 
 func (c *CodeReview) PrintFeedback() {
 	fmt.Println("F E E D B A C K")
-	fmt.Println("-----------------\n")
+	fmt.Println("---------------\n")
 	fmt.Println("  how to give feedback")
 	fmt.Println("")
 	for _, v := range c.Feedback {
@@ -543,4 +549,13 @@ func (c *CodeReview) PrintFeedback() {
 		fmt.Println("")
 	}
 	fmt.Println("source: https://medium.com/unpacking-trunk-club/designing-awesome-code-reviews-5a0d9cd867e3\n")
+}
+
+func (c *CodeReview) PrintLinks() {
+	fmt.Println("L I N K S")
+	fmt.Println("---------\n")
+	fmt.Println("- https://github.com/ryanmcdermott/code-review-tips")
+	fmt.Println("- https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/")
+	fmt.Println("- https://blog.digitalocean.com/how-to-conduct-effective-code-reviews/")
+	fmt.Println("")
 }
