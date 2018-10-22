@@ -1,8 +1,3 @@
-// codereview commandline tool
-//
-// DAS TOOL IST NOCH NICHT FERTIG UND MOMENTAN IN ENTWICKLUNG
-// ES SOLL EINE CHECKLIST UND BEST PRACTIVE HILFE SEIN...
-
 package main
 
 import (
@@ -13,7 +8,7 @@ import (
 )
 
 var (
-	version = "0.0.1"
+	version = "0.1.0"
 
 	codereview = CodeReview{
 		Vocabulars: []Vocabular{
@@ -233,6 +228,48 @@ var (
 				},
 			},
 		},
+		Feedback: []Feedback{
+			Feedback{
+				Base: Base{
+					Name: "What/how format",
+				},
+				Items: []string{
+					"What are some ways to make this code more readable?",
+					"How can the code be optimized to parse the JSON only once?",
+					"What happens when X happens (edge case)?",
+				},
+			},
+			Feedback{
+				Base: Base{
+					Name: "I like/wonder/wish format",
+				},
+				Items: []string{
+					"I like how this is flexible and makes it easy to test.",
+					"I wonder what the advantage of looping through the array every time is.",
+					"I wish the JSON can be parsed only once since it’s expensive to read the file every time.",
+				},
+			},
+			Feedback{
+				Base: Base{
+					Name: "Avoid you/your:",
+				},
+				Items: []string{
+					"Why did you do it this way? What is your reason for this?",
+					"I wonder what you were thinking about.",
+					"I wish you didn’t have to parse this JSON multiple times.",
+				},
+			},
+			Feedback{
+				Base: Base{
+					Name: "Avoid yes/no questions:",
+				},
+				Items: []string{
+					"Is there a better way to do this?",
+					"Did you intend this? Was this intentional?",
+					"Should this method be broken up?",
+				},
+			},
+		},
 	}
 )
 
@@ -292,6 +329,9 @@ func main() {
 		case "checklist":
 			codereview.PrintChecklist()
 			break
+		case "feedback":
+			codereview.PrintFeedback()
+			break
 		case "tools":
 			codereview.PrintTools()
 			break
@@ -325,6 +365,7 @@ type CodeReview struct {
 	Maintainability []Maintain
 	Tools           []Tool
 	Checklist       []Check
+	Feedback        []Feedback
 }
 
 type Base struct {
@@ -370,6 +411,11 @@ type Tool struct {
 }
 
 type Check struct {
+	Base
+	Items []string
+}
+
+type Feedback struct {
 	Base
 	Items []string
 }
@@ -480,4 +526,19 @@ func (c *CodeReview) PrintChecklist() {
 		fmt.Println("")
 	}
 	fmt.Println("source: https://github.com/rjz/code-review-checklist\n")
+}
+
+func (c *CodeReview) PrintFeedback() {
+	fmt.Println("F E E D B A C K")
+	fmt.Println("-----------------\n")
+	fmt.Println("  how to give feedback")
+	fmt.Println("")
+	for _, v := range c.Feedback {
+		v.Print()
+		for _, i := range v.Items {
+			fmt.Println("  - " + i)
+		}
+		fmt.Println("")
+	}
+	fmt.Println("source: https://medium.com/unpacking-trunk-club/designing-awesome-code-reviews-5a0d9cd867e3\n")
 }
