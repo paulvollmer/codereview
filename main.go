@@ -287,6 +287,7 @@ func usage() {
 	fmt.Println("  audits              audit guideline")
 	fmt.Println("  maintainability     knowledge about maintability")
 	fmt.Println("  checklist           a handy codereview checklist")
+	fmt.Println("  feedback            how to give feedback")
 	fmt.Println("  tools               the toolkit manager")
 	fmt.Println("  credits             print credits")
 	fmt.Println("")
